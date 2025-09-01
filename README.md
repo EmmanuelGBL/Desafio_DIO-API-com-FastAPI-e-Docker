@@ -1,37 +1,110 @@
-Workout API - Desafio de Projeto DIO
+# Workout API - Desafio de Projeto DIO
 
-📄 Descrição do Projeto
-Este projeto é uma API para gestão de academias, desenvolvida como parte do desafio de projeto da Digital Innovation One (DIO). A API base, fornecida pela DIO, foi aprimorada com novas funcionalidades para atender aos requisitos específicos do desafio, focando em boas práticas de desenvolvimento de APIs REST com Python e FastAPI.
+## 📄 Descrição do Projeto
+
+Este projeto é uma API para gestão de academias, desenvolvida como parte do desafio de projeto da [Digital Innovation One (DIO)](https://www.dio.me/). A API base, fornecida pela DIO, foi aprimorada com novas funcionalidades para atender aos requisitos específicos do desafio, focando em boas práticas de desenvolvimento de APIs REST com Python e FastAPI.
 
 O objetivo principal foi aplicar e aprofundar os conhecimentos em desenvolvimento backend, manipulação de banco de dados com SQLAlchemy, e a implementação de funcionalidades avançadas em uma API.
 
-🎯 Sobre o Desafio
+## 🎯 Sobre o Desafio
 
-✅ Adição de Query Parameters: Implementação de filtros no endpoint de consulta de atletas para permitir buscas por nome e CPF.
+O projeto original (`https://github.com/digitalinnovationone/workout_api`) foi o ponto de partida. As seguintes funcionalidades foram implementadas para completar o desafio:
 
-✅ Customização de Resposta: Otimização do endpoint GET /atletas para retornar uma lista simplificada, contendo apenas nome, categoria e centro_treinamento de cada atleta.
+  - **✅ Adição de Query Parameters:** Implementação de filtros no endpoint de consulta de atletas para permitir buscas por `nome` e `CPF`.
+  - **✅ Customização de Resposta:** Otimização do endpoint `GET /atletas` para retornar uma lista simplificada, contendo apenas `nome`, `categoria` e `centro_treinamento` de cada atleta.
+  - **✅ Tratamento de Exceções de Integridade:** Manipulação específica do erro `sqlalchemy.exc.IntegrityError` ao tentar cadastrar um atleta com um CPF já existente. A API agora retorna uma mensagem clara (`"Já existe um atleta cadastrado com o cpf: X"`) com o `status_code 303 See Other`.
+  - **✅ Paginação:** Implementação de paginação nos endpoints de listagem utilizando a biblioteca `fastapi-pagination`, permitindo o controle dos resultados com `limit` e `offset`.
 
-✅ Tratamento de Exceções de Integridade: Manipulação específica do erro sqlalchemy.exc.IntegrityError ao tentar cadastrar um atleta com um CPF já existente. A API agora retorna uma mensagem clara ("Já existe um atleta cadastrado com o cpf: X") com o status_code 303 See Other.
+## 🚀 Tecnologias Utilizadas
 
-✅ Paginação: Implementação de paginação nos endpoints de listagem utilizando a biblioteca fastapi-pagination, permitindo o controle dos resultados com limit e offset.
+  - **Python 3.10+**
+  - **FastAPI:** Framework web para a construção da API.
+  - **SQLAlchemy:** ORM para interação com o banco de dados.
+  - **PostgreSQL:** Sistema de gerenciamento de banco de dados relacional.
+  - **Alembic:** Ferramenta para controle de migrações do banco de dados.
+  - **Pydantic:** Para validação e serialização de dados.
+  - **fastapi-pagination:** Biblioteca para adicionar paginação de forma simples.
+  - **Uvicorn:** Servidor ASGI para rodar a aplicação.
 
-🚀 Tecnologias Utilizadas
-Python 3.10+
+## 🕹️ Exemplos de Uso da API
 
-FastAPI: Framework web para a construção da API.
+### Listar atletas com paginação e campos customizados
 
-SQLAlchemy: ORM para interação com o banco de dados.
+`GET /atletas?limit=10&offset=0`
 
-PostgreSQL: Sistema de gerenciamento de banco de dados relacional.
+**Resposta esperada:**
 
-Alembic: Ferramenta para controle de migrações do banco de dados.
+```json
+{
+  "items": [
+    {
+      "nome": "Joao",
+      "categoria": {
+        "nome": "Scale"
+      },
+      "centro_treinamento": {
+        "nome": "CT King"
+      }
+    },
+    {
+      "nome": "Maria",
+      "categoria": {
+        "nome": "RX"
+      },
+      "centro_treinamento": {
+        "nome": "CT Bodybuilding"
+      }
+    }
+  ],
+  "total": 2,
+  "page": 1,
+  "size": 10
+}
+```
 
-Pydantic: Para validação e serialização de dados.
+### Filtrar atleta por CPF
 
-fastapi-pagination: Biblioteca para adicionar paginação de forma simples.
+`GET /atletas?cpf=12345678900`
 
-Uvicorn: Servidor ASGI para rodar a aplicação.
+### Tentativa de criar um atleta com CPF duplicado
+
+`POST /atletas`
+
+**Payload:**
+
+```json
+{
+  "nome": "Fulano de Tal",
+  "cpf": "12345678900",  // CPF que já existe no banco
+  "idade": 30,
+  "peso": 85.5,
+  "altura": 1.80,
+  "sexo": "M",
+  "categoria": { "nome": "Scale" },
+  "centro_treinamento": { "nome": "CT King" }
+}
+```
+
+**Resposta esperada:**
+
+  - **Status Code:** `303 See Other`
+  - **Body:**
+
+<!-- end list -->
+
+```json
+{
+  "detail": "Já existe um atleta cadastrado com o cpf: 12345678900"
+}
+```
+
+## 👨‍💻 Autor
+
+[](https://www.google.com/search?q=https://www.linkedin.com/in/emmanuelmonteiro/)
+[](https://www.google.com/search?q=https://github.com/EmmanuelGBL)
+
+## 🙏 Agradecimentos
+
+Agradeço à [Digital Innovation One](https://www.dio.me/) pela oportunidade de aprendizado e pelo desafio proposto.
 
 
-🙏 Agradecimentos
-Agradeço à Digital Innovation One pela oportunidade de aprendizado e pelo desafio proposto.
