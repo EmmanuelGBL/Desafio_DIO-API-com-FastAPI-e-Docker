@@ -2,7 +2,7 @@
 
 ## 📄 Descrição do Projeto
 
-Este projeto é uma API para gestão de academias, desenvolvida como parte do desafio de projeto da [Digital Innovation One (DIO)](https://www.dio.me/). A API base, fornecida pela DIO, foi aprimorada com novas funcionalidades para atender aos requisitos específicos do desafio, focando em boas práticas de desenvolvimento de APIs REST com Python e FastAPI.
+Este projeto é uma API, desenvolvida como parte do desafio de projeto da DIO. Foi desenvolvido com o objetido de atender aos requisitos específicos do desafio, focando em boas práticas de desenvolvimento de APIs REST com Python e FastAPI.
 
 O objetivo principal foi aplicar e aprofundar os conhecimentos em desenvolvimento backend, manipulação de banco de dados com SQLAlchemy, e a implementação de funcionalidades avançadas em uma API.
 
@@ -100,8 +100,8 @@ O projeto original (`https://github.com/digitalinnovationone/workout_api`) foi o
 
 ## 👨‍💻 Autor
 
-[](https://www.google.com/search?q=https://www.linkedin.com/in/emmanuelmonteiro/)
-[](https://www.google.com/search?q=https://github.com/EmmanuelGBL)
+[Linkedin:](https://www.google.com/search?q=https://www.linkedin.com/in/emmanuelmonteiro/)
+[GitHub](https://www.google.com/search?q=https://github.com/EmmanuelGBL)
 
 ## 🙏 Agradecimentos
 
