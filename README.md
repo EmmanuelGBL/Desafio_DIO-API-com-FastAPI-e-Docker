@@ -100,7 +100,8 @@ O projeto original (`https://github.com/digitalinnovationone/workout_api`) foi o
 
 ## 👨‍💻 Autor
 
-[Linkedin:](https://www.google.com/search?q=https://www.linkedin.com/in/emmanuelmonteiro/)
+[Linkedin](https://www.google.com/search?q=https://www.linkedin.com/in/emmanuelmonteiro/)
+
 [GitHub](https://www.google.com/search?q=https://github.com/EmmanuelGBL)
 
 ## 🙏 Agradecimentos
